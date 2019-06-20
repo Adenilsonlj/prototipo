@@ -26,6 +26,11 @@
             width: 400px;
             height: 200px;
         }
+
+        .hidden {
+            display: none;
+            visibility: hidden;
+        }
     </style>
 </head>
 
@@ -38,8 +43,8 @@
             var ctx = canvas.getContext("2d");
             var img = document.getElementById("canvasImg");
             ctx.drawImage(img, 10, 10);
-            $('#legenda').css('display','none');
-            $("#outro").css('display','none');
+            $('#legenda').addClass('hidden');
+            $("#outro").addClass('hidden');
             var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
                 backgroundColor: 'rgba(255, 255, 255, 0)',
                 penColor: 'rgb(0, 0, 0)'
@@ -54,10 +59,10 @@
 
             $('#list').change(function () {
                 if ($(this).val() === '5') {
-                    $("#outro").css('display','block');
+                    $("#outro").removeClass('hidden');
                 }
                 else {
-                    $("#outro").css('display','none');
+                    $("#outro").addClass('hidden');
                 }
             });
             $("#amarelo").click(function (e) {
@@ -97,14 +102,14 @@
 
             $('#finalizar').click(function (e) {
                 var botoes = document.getElementById("botoes");
-                $('#botoes').css('display','none');
-                $('#finalizar').css('display','none');
-                $('#legenda').css('display','block');
+                $('#botoes').addClass('hidden');
+                $('#finalizar').addClass('hidden');
+                $('#legenda').removeClass('hidden');
                 $('#queixasfield').css("margin-top", "1000px");
                 window.print();
-                $('#botoes').css('display','block');
-                $('#finalizar').css('display','block');
-                $('#legenda').css('display','none');
+                $('#botoes').removeClass('hidden');
+                $('#finalizar').removeClass('hidden');
+                $('#legenda').addClass('hidden');
                 $('#queixasfield').css("margin-top", "0px");
             });
         });
